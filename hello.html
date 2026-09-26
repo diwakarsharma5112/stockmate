@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Hello {{ name }} - StockMate{% endblock %}
+{% block content %}
+<div class="hello-card card">
+    <p class="eyebrow">PERSONALIZED GREETING</p>
+    <h1>Hello, {{ name }}! 👋</h1>
+    <p>Welcome to StockMate. Your inventory and billing dashboard is ready.</p>
+    <a class="btn primary" href="{{ url_for('home') }}">Go to Dashboard</a>
+</div>
+{% endblock %}
