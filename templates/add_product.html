@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Add Product - StockMate{% endblock %}
+{% block content %}
+<div class="page-title"><div><p class="eyebrow">INVENTORY</p><h1>Add Product</h1><p class="muted">Set the product's price, stock and GST rate.</p></div></div>
+<div class="form-wrap"><div class="card form-card">
+<form method="post" class="form">
+<label>Product Name<input type="text" name="name" required></label>
+<label>Category<input type="text" name="category" placeholder="e.g. Electronics" required></label>
+<div class="form-grid"><label>Price (₹)<input type="number" name="price" min="0" step="0.01" required></label><label>GST Rate (%)<input type="number" name="gst_rate" min="0" max="100" step="0.01" value="18" required></label></div>
+<label>Stock Quantity<input type="number" name="stock" min="0" required></label>
+<div class="gst-help"><strong>GST is product-specific.</strong><br>Example: Electronics 18%, stationery 5%. You can change it later from Edit Product.</div>
+<button class="btn primary" type="submit">Add Product</button>
+</form></div></div>
+{% endblock %}

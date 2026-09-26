@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Edit Product - StockMate{% endblock %}
+{% block content %}
+<div class="page-title"><div><p class="eyebrow">PRODUCT MANAGEMENT</p><h1>Edit Product</h1><p class="muted">Update product details and its GST rate.</p></div></div>
+<form method="post" class="card form-card">
+<div class="form-grid"><label>Product Name<input type="text" name="name" value="{{ product.name }}" required></label><label>Category<input type="text" name="category" value="{{ product.category }}" required></label></div>
+<div class="form-grid"><label>Price (₹)<input type="number" name="price" value="{{ product.price }}" min="0" step="0.01" required></label><label>GST Rate (%)<input type="number" name="gst_rate" value="{{ product.gst_rate }}" min="0" max="100" step="0.01" required></label></div>
+<label>Stock Quantity<input type="number" name="stock" value="{{ product.stock }}" min="0" required></label>
+<div><button class="btn primary" type="submit">Save Changes</button><a class="btn secondary" href="{{ url_for('inventory') }}">Cancel</a></div>
+</form>
+{% endblock %}

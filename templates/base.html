@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}StockMate{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+    <aside class="sidebar">
+        <a class="brand" href="{{ url_for('home') }}"><span class="brand-mark">S</span><span>StockMate</span></a>
+        <div class="sidebar-label">MAIN MENU</div>
+        <nav class="side-nav">
+            <a href="{{ url_for('home') }}">🏠 <span>Dashboard</span></a>
+            <a href="{{ url_for('inventory') }}">📦 <span>Inventory</span></a>
+            <a href="{{ url_for('add_product') }}">➕ <span>Add Product</span></a>
+            <a href="{{ url_for('billing') }}">🧾 <span>Billing</span></a>
+            <a href="{{ url_for('sales_history') }}">📜 <span>Sales History</span></a>
+            <a href="{{ url_for('reports') }}">📊 <span>Sales Reports</span></a>
+        </nav>
+        <div class="sidebar-label">HELP & INFO</div>
+        <nav class="side-nav">
+            <a href="{{ url_for('support') }}">🆘 <span>Support</span></a>
+            <a href="{{ url_for('about') }}">ℹ️ <span>About</span></a>
+            <a href="{{ url_for('contact') }}">📞 <span>Contact</span></a>
+        </nav>
+        <div class="sidebar-bottom"><div class="status-dot"></div><div><strong>System Online</strong><small>Inventory ready</small></div></div>
+    </aside>
+    <main class="main-area">
+        <header class="topbar">
+            <div><span class="topbar-title">Inventory & Billing</span><span class="topbar-subtitle">Store management system</span></div>
+            <a class="quick-bill" href="{{ url_for('billing') }}">+ New Bill</a>
+        </header>
+        <div class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </div>
+        <footer>StockMate • Inventory & Billing Management System</footer>
+    </main>
+</div>
+</body>
+</html>
